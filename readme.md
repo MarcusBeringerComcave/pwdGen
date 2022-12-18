@@ -10,6 +10,8 @@ between 12 and 18 alphanumeric characters including symbols (lowercase and upper
 pwdGen è un generatore di password complesse, si può scegliere una grandezza compresa
 tra i 12 e 18 caratteri alfanumerici comprensivi di simboli (minuscole e maiuscole).
 
+[pwdGen DEMO](https://marcellopagano.github.io/pwdGen/)
+
 ### *syntax*:
 ``` javascript
 pwdGen(maxRange)
