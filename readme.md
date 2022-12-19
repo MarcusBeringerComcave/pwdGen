@@ -1,6 +1,6 @@
 # pwdGen 
 
-![pwdgen_picture](./demo.jpg)
+![pwdgen_picture](./readme-img.jpg)
 
 [*english*]
 pwdGen is a strong password generator, you can choose a size between
