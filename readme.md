@@ -14,7 +14,12 @@ tra i 12 e 18 caratteri alfanumerici comprensivi di simboli (lettere minuscole e
 
 ### *syntax*:
 ``` javascript
-pwdGen(maxRange)
+pwdGenWeak(maxRange)
+```
+or
+### *syntax*:
+``` javascript
+pwdGenStrong(maxRange)
 ```
 
 ---
