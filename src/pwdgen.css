@@ -12,8 +12,8 @@ body {
     display: flex;
     flex-direction: column;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 2rem;
-    gap: 30px;
+    font-size: 1.8rem;
+    gap: 20px;
 }
 
 #pwdgen>* {
@@ -23,7 +23,6 @@ body {
     width: 30%;
     padding: 10px;
     margin: auto;
-    justify-content: center;
 }
 
 #pwd-copy:hover {
@@ -40,6 +39,26 @@ body {
 .pwd-message-ani {
     animation: message 1.5s linear alternate;
     -webkit-animation: message 1.5s linear alternate;
+}
+
+#pwd-checkbox {
+    padding: 0;
+}
+
+#pwd-checkbox>* {
+    font-size: .8rem;
+}
+
+#pwd-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+#pwd-buttons>* {
+    font-size: inherit;
+    color: #123;
+    width: 100%;
+    padding: 10px;
 }
 
 @keyframes message {

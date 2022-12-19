@@ -17,8 +17,23 @@
     <div id="pwdgen">
         <span id="pwd-message" class="">copied</span>
         <label for="pwd-input" id="pwd-label"></label>
+        <div id="pwd-checkbox">
+            <label for="check-numbers">Numbers</label>
+            <input type="checkbox" name="check-numbers" id="check-numbers" disabled>
+            <label for="check-lower">Lower</label>
+            <input type="checkbox" name="check-lower" id="check-lower" disabled>
+            <label for="check-upper">Upper</label>
+            <input type="checkbox" name="check-upper" id="check-upper" disabled>
+            <label for="check-signs">Signs</label>
+            <input type="checkbox" name="check-signs" id="check-signs" disabled>
+        </div>
+        
         <input type="text" name="pwd-input" id="pwd-input" spellcheck="false" maxlength="18" disabled>
-        <input type="button" id="pwd-generate" value="generate">
+        <div id="pwd-buttons">
+            <input type="button" id="pwd-generate-weak" value="weak">
+            <input type="button" id="pwd-generate-strong" value="strong">
+        </div>
+       
         <button id="pwd-copy"><i class="fa-regular fa-copy"></i></button>
         <input type="range" name="pwd-range" id="pwd-range" min="12" max="18" value="12">
     </div>
