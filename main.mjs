@@ -45,6 +45,6 @@ pwdGenerateStrong.addEventListener('click', () => {
 })
 
 pwdLabelView()
-pwdLabelCheck()
 // start with default value maxRange=12
 pwdInput.value = pwdGenWeak()
+pwdLabelCheck()
