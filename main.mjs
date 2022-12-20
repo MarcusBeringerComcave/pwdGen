@@ -1,10 +1,11 @@
-import { pwdGenWeak, pwdGenStrong, pwdCheck } from "./src/pwdgen.mjs"
+import { pwdGenWeak, pwdGenStrong, pwdCheck, pwdRisk } from "./src/pwdgen.mjs"
 
 const pwdCheckbox = document.querySelectorAll('input[type="checkbox"]')
 const pwdMessage = document.getElementById('pwd-message')
 const pwdCopy = document.getElementById('pwd-copy')
 const pwdLabel = document.getElementById('pwd-label')
 const pwdInput = document.getElementById('pwd-input')
+const pwdRiskBar = document.getElementById('pwd-risk-bar')
 const pwdRange = document.getElementById('pwd-range')
 const pwdGenerateWeak = document.getElementById('pwd-generate-weak')
 const pwdGenerateStrong = document.getElementById('pwd-generate-strong')
@@ -12,13 +13,12 @@ const pwdGenerateStrong = document.getElementById('pwd-generate-strong')
 const pwdLabelView = () => pwdLabel.innerHTML = `<i class="fa-solid fa-key"></i> : ${pwdRange.value}`
 
 const pwdLabelCheck = () => {
-    Object.values(pwdCheck(pwdInput.value)).forEach((v, idx) => {
+    pwdCheck(pwdInput.value).forEach((v, idx) => {
         return v == true ? pwdCheckbox[idx].checked = true : pwdCheckbox[idx].checked = false
     })
 }
 
 pwdCopy.addEventListener('click', function () {
-    console.log('123');
     try {
         navigator.clipboard.writeText(pwdInput.value).then(() => {
             pwdMessage.classList.add('pwd-message-ani')
@@ -37,14 +37,19 @@ pwdRange.addEventListener('input', () => {
 pwdGenerateWeak.addEventListener('click', () => {
     pwdInput.value = pwdGenWeak(pwdRange.value)
     pwdLabelCheck()
+    pwdRisk(pwdRiskBar, pwdRange.value, pwdCheck(pwdInput.value))
 })
 
 pwdGenerateStrong.addEventListener('click', () => {
     pwdInput.value = pwdGenStrong(pwdRange.value)
     pwdLabelCheck()
+    pwdRisk(pwdRiskBar, pwdRange.value, pwdCheck(pwdInput.value))
 })
 
-pwdLabelView()
+void function init(){
 // start with default value maxRange=12
 pwdInput.value = pwdGenWeak()
+pwdLabelView()
 pwdLabelCheck()
+pwdRisk(pwdRiskBar, pwdRange.value, pwdCheck(pwdInput.value))
+}()

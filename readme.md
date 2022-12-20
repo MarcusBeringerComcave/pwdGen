@@ -1,6 +1,6 @@
 # pwdGen 
 
-![pwdgen_picture](./readme-img.jpg)
+![pwdgen_picture](./demo.png)
 
 [*english*]
 pwdGen is a strong password generator, you can choose a size between
@@ -14,12 +14,12 @@ tra i 12 e 18 caratteri alfanumerici comprensivi di simboli (lettere minuscole e
 
 ### *syntax*:
 ``` javascript
-pwdGenWeak(maxRange)
+pwdGenWeak(pwdLength)
 ```
 or
 ### *syntax*:
 ``` javascript
-pwdGenStrong(maxRange)
+pwdGenStrong(pwdLength)
 ```
 
 ---
@@ -28,7 +28,7 @@ pwdGenStrong(maxRange)
 
 ``` javascript
     /*
-    @param maxRange?: number [* 12]
+    @param pwdLength?: number [* 12]
 
     * default value
     */

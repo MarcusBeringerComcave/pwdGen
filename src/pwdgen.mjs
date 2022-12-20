@@ -9,12 +9,30 @@ export const pwdCheck = (pwd) => {
     const checkLetterLower = pwd.split('').some(v => lettersLower.includes(v))
     const checkLetterUpper = pwd.split('').some(v => lettersUpper.includes(v))
     const checkSigns = pwd.split('').some(v => signs.includes(v))
-    return {
-        numbers: checkNumbers,
-        letterLower: checkLetterLower,
-        lettersUpper: checkLetterUpper,
-        signs: checkSigns
+    const arr = [checkNumbers, checkLetterLower, checkLetterUpper, checkSigns]
+    return arr
+}
+// @params riskBarEl : htmlElement
+// @params pwdCheck : boolean[] 
+// @params pwdLenght? : integer 
+export const pwdRisk = (riskBarEl, pwdLength = 12, fnCheck) => {
+    const pwdRisk = fnCheck.filter(v => v == true).length
+    if (pwdRisk == 2) {
+        if (pwdLength > 11 && pwdLength < 15) riskBarEl.setAttribute('class', 'risk-high')
+        if (pwdLength > 14 && pwdLength < 18) riskBarEl.setAttribute('class', 'risk-normal')
+        if (pwdLength == 18) riskBarEl.setAttribute('class', 'risk-low')
     }
+    if (pwdRisk == 3) {
+        if (pwdLength == 12 || pwdLength == 13) riskBarEl.setAttribute('class', 'risk-high')
+        if (pwdLength > 13 && pwdLength < 17) riskBarEl.setAttribute('class', 'risk-normal')
+        if (pwdLength == 17 || pwdLength == 18) riskBarEl.setAttribute('class', 'risk-low')
+    }
+    if (pwdRisk == 4) {
+        if (pwdLength == 12) riskBarEl.setAttribute('class', 'risk-high')
+        if (pwdLength > 12 && pwdLength < 16) riskBarEl.setAttribute('class', 'risk-normal')
+        if (pwdLength > 15 && pwdLength < 19) riskBarEl.setAttribute('class', 'risk-low')
+    }
+    return pwdRisk
 }
 
 // numbers 0-9
@@ -29,20 +47,20 @@ for (let i = 65; i <= 90; i++) {
 for (let i = 65; i <= 90; i++) {
     lettersUpper.push(String.fromCharCode(i).toUpperCase())
 }
-// @params max : integer 
-export const pwdGenWeak = (max = 12) => {
-    return [...numbers, ...lettersLower, ...lettersUpper, ...signs]
+// @params pwdLength : integer 
+export const pwdGenWeak = (pwdLength = 12) => {
+    const arr = [...numbers, ...lettersLower, ...lettersUpper, ...signs]
         .sort(() => Math.random() - 0.5)
-        .slice(0, parseInt(max))
-        .join('')
+        .slice(0, parseInt(pwdLength))
+    return arr.join('')
 }
-// @params max : integer 
-export const pwdGenStrong = (max = 12) => {
+// @params pwdLength : integer 
+export const pwdGenStrong = (pwdLength = 12) => {
     const arr = []
     let tmp = []
     let count = 0
 
-    for (let i = 0; i < max; i++) {
+    for (let i = 0; i < pwdLength; i++) {
         numbers.sort(() => Math.random() - 0.5)
         lettersLower.sort(() => Math.random() - 0.5)
         lettersUpper.sort(() => Math.random() - 0.5)
